@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.12;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {IAToken} from "../../../interfaces/IAToken.sol";
@@ -21,7 +21,7 @@ import {DataTypes} from "../types/DataTypes.sol";
  * @notice Implements the logic to update the reserves state
  */
 library ReserveLogic {
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 	using WadRayMath for uint256;
 	using PercentageMath for uint256;
 	using SafeERC20 for IERC20;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.12;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/Math.sol";
 import {IReserveInterestRateStrategy} from "../../interfaces/IReserveInterestRateStrategy.sol";
 import {WadRayMath} from "../libraries/math/WadRayMath.sol";
 import {PercentageMath} from "../libraries/math/PercentageMath.sol";
@@ -20,7 +20,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
  **/
 contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
 	using WadRayMath for uint256;
-	using SafeMath for uint256;
+	using Math for uint256;
 	using PercentageMath for uint256;
 
 	/**
@@ -94,7 +94,8 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
 	}
 
 	function getMaxVariableBorrowRate() external view returns (uint256) {
-		return _baseVariableBorrowRate.add(_variableRateSlope1).add(_variableRateSlope2);
+		// return _baseVariableBorrowRate.add(_variableRateSlope1).add(_variableRateSlope2);
+		return _baseVariableBorrowRate + _variableRateSlope1 + _variableRateSlope2;
 	}
 
 	/**
@@ -120,7 +121,8 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
 	) external view returns (uint256, uint256, uint256) {
 		uint256 availableLiquidity = IERC20(reserve).balanceOf(aToken);
 		//avoid stack too deep
-		availableLiquidity = availableLiquidity.add(liquidityAdded).sub(liquidityTaken);
+		// availableLiquidity = availableLiquidity.add(liquidityAdded).sub(liquidityTaken);
+		availableLiquidity = availableLiquidity + liquidityAdded - liquidityTaken;
 
 		return
 			calculateInterestRates(
@@ -163,12 +165,13 @@ contract DefaultReserveInterestRateStrategy is IReserveInterestRateStrategy {
 	) public view returns (uint256, uint256, uint256) {
 		CalcInterestRatesLocalVars memory vars;
 
-		vars.totalDebt = totalStableDebt.add(totalVariableDebt);
+		// vars.totalDebt = totalStableDebt.add(totalVariableDebt);
+		vars.totalDebt = totalStableDebt + totalVariableDebt;
 		vars.currentVariableBorrowRate = 0;
 		vars.currentStableBorrowRate = 0;
 		vars.currentLiquidityRate = 0;
 
-		vars.utilizationRate = vars.totalDebt == 0 ? 0 : vars.totalDebt.rayDiv(availableLiquidity.add(vars.totalDebt));
+		vars.utilizationRate = vars.totalDebt == 0 ? 0 : vars.totalDebt.rayDiv(availableLiquidity+vars.totalDebt);
 
 		vars.currentStableBorrowRate = ILendingRateOracle(addressesProvider.getLendingRateOracle()).getMarketBorrowRate(
 			reserve

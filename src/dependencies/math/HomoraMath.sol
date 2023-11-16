@@ -2,21 +2,24 @@
 
 pragma solidity ^0.8.12;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/Math.sol";
 
 library HomoraMath {
-	using SafeMath for uint;
+	using Math for uint;
 
 	function divCeil(uint lhs, uint rhs) internal pure returns (uint) {
-		return lhs.add(rhs).sub(1) / rhs;
+		// return lhs.add(rhs).sub(1) / rhs;
+		return (lhs+ rhs - 1) / rhs;
 	}
 
 	function fmul(uint lhs, uint rhs) internal pure returns (uint) {
-		return lhs.mul(rhs) / (2 ** 112);
+		// return lhs.mul(rhs) / (2 ** 112);
+		return lhs * rhs / (2 ** 112);
 	}
 
 	function fdiv(uint lhs, uint rhs) internal pure returns (uint) {
-		return lhs.mul(2 ** 112) / rhs;
+		// return lhs.mul(2 ** 112) / rhs;
+		return lhs * (2 ** 112) / rhs;
 	}
 
 	// implementation from https://github.com/Uniswap/uniswap-lib/commit/99f3f28770640ba1bb1ff460ac7c5292fb8291a0

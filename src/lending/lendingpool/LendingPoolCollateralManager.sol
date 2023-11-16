@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.12;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IAToken} from "../../interfaces/IAToken.sol";
 import {IStableDebtToken} from "../../interfaces/IStableDebtToken.sol";
@@ -31,7 +31,7 @@ import {ReserveLogic} from "../libraries/logic/ReserveLogic.sol";
  **/
 contract LendingPoolCollateralManager is ILendingPoolCollateralManager, VersionedInitializable, LendingPoolStorage {
 	using SafeERC20 for IERC20;
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 	using WadRayMath for uint256;
 	using PercentageMath for uint256;
 	using ReserveLogic for DataTypes.ReserveData;

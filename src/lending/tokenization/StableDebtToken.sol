@@ -8,7 +8,7 @@ import {IStableDebtToken} from "../../interfaces/IStableDebtToken.sol";
 import {ILendingPool} from "../../interfaces/ILendingPool.sol";
 import {IAaveIncentivesController} from "../../interfaces/IAaveIncentivesController.sol";
 import {Errors} from "../libraries/helpers/Errors.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /**
  * @title StableDebtToken
@@ -18,7 +18,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
  **/
 contract StableDebtToken is IStableDebtToken, DebtTokenBase {
 	using WadRayMath for uint256;
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 
 	uint256 public constant DEBT_TOKEN_REVISION = 0x1;
 

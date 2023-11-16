@@ -7,7 +7,7 @@ import {Errors} from "../libraries/helpers/Errors.sol";
 import {DebtTokenBase} from "./base/DebtTokenBase.sol";
 import {ILendingPool} from "../../interfaces/ILendingPool.sol";
 import {IAaveIncentivesController} from "../../interfaces/IAaveIncentivesController.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /**
  * @title VariableDebtToken
@@ -17,7 +17,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
  **/
 contract VariableDebtToken is DebtTokenBase, IVariableDebtToken {
 	using WadRayMath for uint256;
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 
 	uint256 public constant DEBT_TOKEN_REVISION = 0x1;
 

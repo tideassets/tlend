@@ -4,7 +4,7 @@ pragma solidity ^0.8.12;
 import {OFTV2} from "@layerzerolabs/solidity-examples/contracts/token/oft/v2/OFTV2.sol";
 import {Pausable} from "@openzeppelin/contracts/security/Pausable.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
-import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 import {IPriceProvider} from "../../interfaces/IPriceProvider.sol";
 

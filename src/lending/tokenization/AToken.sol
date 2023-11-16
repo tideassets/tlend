@@ -10,7 +10,7 @@ import {Errors} from "../libraries/helpers/Errors.sol";
 import {VersionedInitializable} from "../libraries/aave-upgradeability/VersionedInitializable.sol";
 import {IncentivizedERC20} from "./IncentivizedERC20.sol";
 import {IAaveIncentivesController} from "../../interfaces/IAaveIncentivesController.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import {IMiddleFeeDistribution} from "../../interfaces/IMiddleFeeDistribution.sol";
 
 /**
@@ -21,7 +21,7 @@ import {IMiddleFeeDistribution} from "../../interfaces/IMiddleFeeDistribution.so
 contract AToken is VersionedInitializable, IncentivizedERC20("ATOKEN_IMPL", "ATOKEN_IMPL", 0), IAToken {
 	using WadRayMath for uint256;
 	using SafeERC20 for IERC20;
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 
 	bytes public constant EIP712_REVISION = bytes("1");
 	bytes32 internal constant EIP712_DOMAIN =

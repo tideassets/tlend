@@ -2,7 +2,7 @@
 pragma solidity ^0.8.12;
 pragma experimental ABIEncoderV2;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import {VersionedInitializable} from "../libraries/aave-upgradeability/VersionedInitializable.sol";
 import {InitializableImmutableAdminUpgradeabilityProxy} from "../libraries/aave-upgradeability/InitializableImmutableAdminUpgradeabilityProxy.sol";
 import {ReserveConfiguration} from "../libraries/configuration/ReserveConfiguration.sol";
@@ -26,7 +26,7 @@ import {IMultiFeeDistribution} from "../../interfaces/IMultiFeeDistribution.sol"
  **/
 
 contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigurator {
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 	using PercentageMath for uint256;
 	using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
 

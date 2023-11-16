@@ -2,7 +2,7 @@
 pragma solidity ^0.8.12;
 pragma experimental ABIEncoderV2;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
@@ -46,7 +46,7 @@ import {LendingPoolStorage} from "./LendingPoolStorage.sol";
  * @author Aave
  **/
 contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage {
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 	using WadRayMath for uint256;
 	using PercentageMath for uint256;
 	using SafeERC20 for IERC20;

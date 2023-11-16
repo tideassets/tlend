@@ -4,7 +4,8 @@ pragma solidity ^0.8.12;
 import {Context} from "../../dependencies/openzeppelin/contracts/Context.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import {WadRayMath} from "../libraries/math/WadRayMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import {IAaveIncentivesController} from "../../interfaces/IAaveIncentivesController.sol";
 import {ILendingPoolAddressesProvider} from "../../interfaces/ILendingPoolAddressesProvider.sol";
 import {IPriceOracle} from "../../interfaces/IPriceOracle.sol";
@@ -16,7 +17,8 @@ import {ILendingPool} from "../../interfaces/ILendingPool.sol";
  * @author Aave, inspired by the Openzeppelin ERC20 implementation
  **/
 abstract contract IncentivizedERC20 is Context, IERC20, IERC20Metadata {
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
+	using wadRayMath for uint256;
 
 	mapping(address => uint256) internal _balances;
 

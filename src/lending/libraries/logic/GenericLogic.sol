@@ -2,7 +2,7 @@
 pragma solidity ^0.8.12;
 pragma experimental ABIEncoderV2;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+// import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {ReserveLogic} from "./ReserveLogic.sol";
 import {ReserveConfiguration} from "../configuration/ReserveConfiguration.sol";
@@ -19,7 +19,7 @@ import {DataTypes} from "../types/DataTypes.sol";
  */
 library GenericLogic {
 	using ReserveLogic for DataTypes.ReserveData;
-	using SafeMath for uint256;
+	// using SafeMath for uint256;
 	using WadRayMath for uint256;
 	using PercentageMath for uint256;
 	using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
