@@ -35,8 +35,8 @@ pragma solidity ^0.8.12;
 //
 //----------------------------------------------------------------------------------
 
-import {IUniswapV2Pair} from "@uniswap/lib/contracts/interfaces/IUniswapV2Pair.sol";
-import {UniswapV2Library} from "@uniswap/lib/contracts/libraries/UniswapV2Library.sol";
+import {IUniswapV2Pair} from "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
+import {UniswapV2Library} from "@uniswap/v2-core/contracts/libraries/UniswapV2Library.sol";
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
