@@ -2,9 +2,9 @@
 pragma solidity ^0.8.20;
 
 import {BaseOracle} from "../BaseOracle.sol";
-import {IUniswapV3Pool} from "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import {OracleLibrary} from "@uniswap/v3-periphery/contracts/libraries/OracleLibrary.sol";
+import {OracleLibrary} from "../../../dependencies/uniswap/contracts/v3/OracleLibrary.sol";
+import {IUniswapV3Pool} from "../../../dependencies/uniswap/contracts/v3/IUniswapV3Pool.sol";
 
 /// @title UniV3TwapOracle Contract
 /// @author Radiant

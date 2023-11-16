@@ -98,9 +98,11 @@ contract UniV2TwapOracle is BaseOracle {
 
 		price0CumulativeLast = pair.price0CumulativeLast(); // Fetch the current accumulated price value (1 / 0)
 		price1CumulativeLast = pair.price1CumulativeLast(); // Fetch the current accumulated price value (0 / 1)
-		uint112 reserve0;
-		uint112 reserve1;
-		(reserve0, reserve1, blockTimestampLast) = pair.getReserves();
+		uint256 reserve0;
+		uint256 reserve1;
+		uint256 btl;
+		(reserve0, reserve1, btl) = pair.getReserves();
+		blockTimestampLast = uint32(btl);
 
 		if (reserve0 == 0 || reserve1 == 0) revert NoReserves(); // Ensure that there's liquidity in the pair
 		if (_period < PERIOD_MIN) revert PeriodBelowMin(); // Ensure period has a min time

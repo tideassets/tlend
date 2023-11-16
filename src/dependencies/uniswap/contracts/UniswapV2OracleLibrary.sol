@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity ^0.8.20;
 
-import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
+import "../../../interfaces/uniswap/IUniswapV2Pair.sol";
 import "./FixedPoint.sol";
 
 // library with helper methods for oracles that are concerned with computing average prices
@@ -22,10 +22,10 @@ library UniswapV2OracleLibrary {
 		price1Cumulative = IUniswapV2Pair(pair).price1CumulativeLast();
 
 		// if time has elapsed since the last update on the pair, mock the accumulated price values
-		(uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast) = IUniswapV2Pair(pair).getReserves();
+		(uint256 reserve0, uint256 reserve1, uint256 blockTimestampLast) = IUniswapV2Pair(pair).getReserves();
 		if (blockTimestampLast != blockTimestamp) {
 			// subtraction overflow is desired
-			uint32 timeElapsed = blockTimestamp - blockTimestampLast;
+			uint256 timeElapsed = uint(blockTimestamp) - blockTimestampLast;
 			// addition overflow is desired
 			// counterfactual
 			price0Cumulative += uint(FixedPoint.fraction(reserve1, reserve0)._x) * timeElapsed;
