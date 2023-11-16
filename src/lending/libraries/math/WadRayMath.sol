@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {Errors} from "../helpers/Errors.sol";
 
@@ -145,5 +145,15 @@ library WadRayMath {
 	}
 	function div(uint256 a, uint256 b) internal pure returns (uint256) {
 		return a / b;
+	}
+	function add(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+		uint256 c = a + b;
+		require(c >= a, errorMessage);
+		return c;
+	}
+	function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+		require(b <= a, errorMessage);
+		uint256 c = a - b;
+		return c;
 	}
 }

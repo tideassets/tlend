@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 interface IArbitrumSequencerUptimeFeed {
 	function aliasedL1MessageSender() external view returns (address);

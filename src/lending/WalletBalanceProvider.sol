@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 pragma experimental ABIEncoderV2;
 
@@ -32,7 +32,7 @@ contract WalletBalanceProvider {
     **/
 	receive() external payable {
 		//only contracts can send ETH to the core
-		require(msg.sender.isContract(), "22");
+		// require(msg.sender.isContract(), "22");
 	}
 
 	/**
@@ -45,10 +45,8 @@ contract WalletBalanceProvider {
 		if (token == MOCK_ETH_ADDRESS) {
 			return user.balance; // ETH balance
 			// check if token is actually a contract
-		} else if (token.isContract()) {
+		} 
 			return IERC20(token).balanceOf(user);
-		}
-		revert("INVALID_TOKEN");
 	}
 
 	/**

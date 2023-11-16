@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {AddressPagination} from "../libraries/AddressPagination.sol";
@@ -22,6 +22,8 @@ contract LockerList is Ownable {
 	/********************** Errors ***********************/
 
 	error Ineligible();
+
+	constructor() Ownable(msg.sender) {}
 
 	/********************** Lockers list ***********************/
 

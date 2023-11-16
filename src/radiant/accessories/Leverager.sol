@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
@@ -123,7 +123,7 @@ contract Leverager is OwnableUpgradeable {
 		if (address(_weth) == address(0)) revert AddressZero();
 		if (_treasury == address(0)) revert AddressZero();
 		if (_feePercent > MAX_REASONABLE_FEE) revert InvalidRatio();
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 
 		lendingPool = _lendingPool;
 		eligibilityDataProvider = _rewardEligibleDataProvider;

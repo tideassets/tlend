@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -23,7 +23,7 @@ contract WETHGateway is IWETHGateway, Ownable {
 	 * @dev Sets the WETH address and the LendingPoolAddressesProvider address. Infinite approves lending pool.
 	 * @param weth Address of the Wrapped Ether contract
 	 **/
-	constructor(address weth) {
+	constructor(address weth) Ownable(msg.sender) {
 		WETH = IWETH(weth);
 	}
 

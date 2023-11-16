@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 interface IWETHGateway {
 	function depositETH(address lendingPool, address onBehalfOf, uint16 referralCode) external payable;

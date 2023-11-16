@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -30,7 +30,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider 
 	bytes32 private constant PRICE_ORACLE = "PRICE_ORACLE";
 	bytes32 private constant LENDING_RATE_ORACLE = "LENDING_RATE_ORACLE";
 
-	constructor(string memory marketId) {
+	constructor(string memory marketId) Ownable(msg.sender){
 		_setMarketId(marketId);
 		_liquidationFeeTo = 0xF90C69D16599A5C657A05Fe76Cd22fD9Cab44598;
 	}

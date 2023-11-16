@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {DustRefunder} from "./helpers/DustRefunder.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -139,7 +139,7 @@ contract LockZap is Initializable, OwnableUpgradeable, PausableUpgradeable, Dust
 		if (_ethLPRatio == 0 || _ethLPRatio >= RATIO_DIVISOR) revert InvalidRatio();
 		if (address(_aaveOracle) == address(0)) revert AddressZero();
 
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 		__Pausable_init();
 
 		lendingPool = _lendingPool;

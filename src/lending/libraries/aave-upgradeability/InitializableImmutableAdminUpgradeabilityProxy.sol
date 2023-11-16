@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import "./BaseImmutableAdminUpgradeabilityProxy.sol";
 import "../../../dependencies/openzeppelin/upgradeability/InitializableUpgradeabilityProxy.sol";
@@ -20,4 +20,5 @@ contract InitializableImmutableAdminUpgradeabilityProxy is
 	function _willFallback() internal override(BaseImmutableAdminUpgradeabilityProxy, Proxy) {
 		BaseImmutableAdminUpgradeabilityProxy._willFallback();
 	}
+
 }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
@@ -105,7 +105,7 @@ contract MiddleFeeDistribution is IMiddleFeeDistribution, Initializable, Ownable
 		if (address(multiFeeDistribution_) == address(0)) revert ZeroAddress();
 		if (address(aaveProtocolDataProvider_) == address(0)) revert ZeroAddress();
 
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 
 		rdntToken = rdntToken_;
 		_aaveOracle = aaveOracle_;

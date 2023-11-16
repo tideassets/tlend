@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 import {IBaseOracle} from "../../interfaces/IBaseOracle.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
@@ -60,7 +60,7 @@ contract PriceProvider is Initializable, OwnableUpgradeable {
 	) public initializer {
 		if (address(_baseAssetChainlinkAdapter) == (address(0))) revert AddressZero();
 		if (address(_poolHelper) == (address(0))) revert AddressZero();
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 
 		poolHelper = _poolHelper;
 		baseAssetChainlinkAdapter = IChainlinkAdapter(_baseAssetChainlinkAdapter);
@@ -149,8 +149,8 @@ contract PriceProvider is Initializable, OwnableUpgradeable {
 		address sourceOfAsset = IAaveOracle(aaveOracle).getSourceOfAsset(assetAddress);
 
 		uint8 priceDecimals;
-		try IChainlinkAggregator(sourceOfAsset).decimals() returns (uint8 decimals) {
-			priceDecimals = decimals;
+		try IChainlinkAggregator(sourceOfAsset).decimals() returns (uint8 decimals_) {
+			priceDecimals = decimals_;
 		} catch {
 			priceDecimals = 8;
 		}

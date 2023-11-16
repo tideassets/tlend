@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {UserConfiguration} from "../libraries/configuration/UserConfiguration.sol";
 import {ReserveConfiguration} from "../libraries/configuration/ReserveConfiguration.sol";

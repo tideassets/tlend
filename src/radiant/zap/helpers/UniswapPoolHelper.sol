@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {DustRefunder} from "./DustRefunder.sol";
 // import {UniswapV2Library} from "@uniswap/v2-core/contracts/libraries/UniswapV2Library.sol";
@@ -59,7 +59,7 @@ contract UniswapPoolHelper is Initializable, OwnableUpgradeable, DustRefunder {
 		if (_routerAddr == address(0)) revert AddressZero();
 		if (address(_liquidityZap) == address(0)) revert AddressZero();
 
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 
 		rdntAddr = _rdntAddr;
 		wethAddr = _wethAddr;

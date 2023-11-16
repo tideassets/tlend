@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import "./Proxy.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
@@ -50,7 +50,7 @@ contract BaseUpgradeabilityProxy is Proxy {
 	 * @param newImplementation Address of the new implementation.
 	 */
 	function _setImplementation(address newImplementation) internal {
-		require(Address.isContract(newImplementation), "Cannot set a proxy implementation to a non-contract address");
+		// require(Address.isContract(newImplementation), "Cannot set a proxy implementation to a non-contract address");
 
 		bytes32 slot = IMPLEMENTATION_SLOT;
 

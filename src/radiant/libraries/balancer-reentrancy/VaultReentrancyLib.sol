@@ -2,7 +2,7 @@
 // Modified by Radiant Capital to accommodate different interface files
 pragma solidity >=0.7.0 <0.9.0;
 
-import "@balancer-labs/v2-interfaces/contracts/solidity-utils/helpers/BalancerErrors.sol";
+// import "@balancer-labs/v2-interfaces/contracts/solidity-utils/helpers/BalancerErrors.sol";
 import {IVault} from "../../../interfaces/balancer/IWeightedPoolFactory.sol";
 
 library VaultReentrancyLib {
@@ -67,6 +67,6 @@ library VaultReentrancyLib {
 			abi.encodeWithSelector(vault.manageUserBalance.selector, 0)
 		);
 
-		_require(revertData.length == 0, Errors.REENTRANCY);
+		require(revertData.length == 0, "Errors.REENTRANCY");
 	}
 }

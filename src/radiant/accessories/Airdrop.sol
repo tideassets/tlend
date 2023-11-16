@@ -51,7 +51,7 @@ contract ArbAirdrop is Pausable, ReentrancyGuard, Ownable {
 	 * @param _maximumAmountToClaim maximum amount to claim per a user
 	 * @param _arbToken address of the ARB airdrop token
 	 */
-	constructor(uint256 _endTimestamp, uint256 _maximumAmountToClaim, address _arbToken) {
+	constructor(uint256 _endTimestamp, uint256 _maximumAmountToClaim, address _arbToken) Ownable(msg.sender) {
 		endTimestamp = _endTimestamp;
 		MAXIMUM_AMOUNT_TO_CLAIM = _maximumAmountToClaim;
 		arbToken = IERC20(_arbToken);

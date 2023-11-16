@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import {ILendingPoolAddressesProviderRegistry} from "../../interfaces/ILendingPoolAddressesProviderRegistry.sol";
@@ -16,6 +16,8 @@ import {Errors} from "../libraries/helpers/Errors.sol";
 contract LendingPoolAddressesProviderRegistry is Ownable, ILendingPoolAddressesProviderRegistry {
 	mapping(address => uint256) private _addressesProviders;
 	address[] private _addressesProvidersList;
+
+	constructor() Ownable(msg.sender) {}
 
 	/**
 	 * @dev Returns the list of registered addresses provider

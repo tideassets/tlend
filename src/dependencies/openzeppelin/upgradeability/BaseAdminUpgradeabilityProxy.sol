@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import "./UpgradeabilityProxy.sol";
 
@@ -118,4 +118,6 @@ contract BaseAdminUpgradeabilityProxy is BaseUpgradeabilityProxy {
 		require(msg.sender != _admin(), "Cannot call fallback function from the proxy admin");
 		super._willFallback();
 	}
+
+	// receive() external payable {}
 }

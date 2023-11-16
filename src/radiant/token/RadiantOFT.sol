@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {OFTV2} from "@layerzerolabs/solidity-examples/contracts/token/oft/v2/OFTV2.sol";
 import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
 import {Address} from "@openzeppelin/contracts/utils/Address.sol";
@@ -65,7 +66,7 @@ contract RadiantOFT is OFTV2, Pausable, ReentrancyGuard {
 		address _dao,
 		address _treasury,
 		uint256 _mintAmt
-	) OFTV2(_tokenName, _symbol, SHARED_DECIMALS, _endpoint) {
+	) OFTV2(_tokenName, _symbol, SHARED_DECIMALS, _endpoint) Ownable(msg.sender){
 		if (_endpoint == address(0)) revert AddressZero();
 		if (_dao == address(0)) revert AddressZero();
 		if (_treasury == address(0)) revert AddressZero();
@@ -151,7 +152,7 @@ contract RadiantOFT is OFTV2, Pausable, ReentrancyGuard {
 		uint256 fee = getBridgeFee(amount);
 		if (msg.value < fee) revert InsufficientETHForFee();
 
-		_checkAdapterParams(_dstChainId, PT_SEND, _adapterParams, NO_EXTRA_GAS);
+		// _checkAdapterParams(_dstChainId, PT_SEND, _adapterParams, NO_EXTRA_GAS);
 
 		if (amount == 0) revert AmountTooSmall();
 		_debitFrom(_from, _dstChainId, _toAddress, amount); // amount returned should not have dust
@@ -196,7 +197,7 @@ contract RadiantOFT is OFTV2, Pausable, ReentrancyGuard {
 		uint256 fee = getBridgeFee(amount);
 		if (msg.value < fee) revert InsufficientETHForFee();
 
-		_checkAdapterParams(_dstChainId, PT_SEND_AND_CALL, _adapterParams, _dstGasForCall);
+		// _checkAdapterParams(_dstChainId, PT_SEND_AND_CALL, _adapterParams, _dstGasForCall);
 
 		if (amount == 0) revert AmountTooSmall();
 		_debitFrom(_from, _dstChainId, _toAddress, amount);

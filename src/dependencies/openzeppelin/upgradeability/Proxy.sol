@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 /**
  * @title Proxy
@@ -16,6 +16,8 @@ abstract contract Proxy {
 	fallback() external payable {
 		_fallback();
 	}
+
+	 receive() external payable {}
 
 	/**
 	 * @return The Address of the implementation.

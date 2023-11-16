@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {IChainlinkAggregator} from "../../interfaces/IChainlinkAggregator.sol";
@@ -39,7 +39,7 @@ abstract contract BaseOracle is Initializable, OwnableUpgradeable {
 	 * @param _ethChainlinkFeed chainlink price feed for ETH.
 	 */
 	function __BaseOracle_init(address _token, address _ethChainlinkFeed) internal onlyInitializing {
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 		token = _token;
 		ethChainlinkFeed = _ethChainlinkFeed;
 	}

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //
@@ -36,7 +36,7 @@ pragma solidity ^0.8.12;
 //----------------------------------------------------------------------------------
 
 import {IUniswapV2Pair} from "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
-import {UniswapV2Library} from "@uniswap/v2-core/contracts/libraries/UniswapV2Library.sol";
+import {UniswapV2Library} from "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol";
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
@@ -88,7 +88,7 @@ contract LiquidityZap is Initializable, OwnableUpgradeable, DustRefunder {
 	 * @notice Initialize
 	 */
 	function initialize() external initializer {
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 	}
 
 	/**

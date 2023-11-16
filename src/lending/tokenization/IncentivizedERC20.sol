@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {Context} from "../../dependencies/openzeppelin/contracts/Context.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -18,7 +18,7 @@ import {ILendingPool} from "../../interfaces/ILendingPool.sol";
  **/
 abstract contract IncentivizedERC20 is Context, IERC20, IERC20Metadata {
 	// using SafeMath for uint256;
-	using wadRayMath for uint256;
+	using WadRayMath for uint256;
 
 	mapping(address => uint256) internal _balances;
 

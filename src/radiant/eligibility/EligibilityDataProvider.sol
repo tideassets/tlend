@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
@@ -105,7 +105,7 @@ contract EligibilityDataProvider is OwnableUpgradeable {
 		priceProvider = _priceProvider;
 		requiredDepositRatio = INITIAL_REQUIRED_DEPOSIT_RATIO;
 		priceToleranceRatio = INITIAL_PRICE_TOLERANCE_RATIO;
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 	}
 
 	/********************** Setters ***********************/

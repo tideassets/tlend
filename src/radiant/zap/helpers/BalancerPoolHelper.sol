@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import {DustRefunder} from "./DustRefunder.sol";
 import {BNum} from "../../../dependencies/math/BNum.sol";
@@ -75,7 +75,7 @@ contract BalancerPoolHelper is IBalancerPoolHelper, Initializable, OwnableUpgrad
 		if (_vault == address(0)) revert AddressZero();
 		if (address(_poolFactory) == address(0)) revert AddressZero();
 
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 		inTokenAddr = _inTokenAddr;
 		outTokenAddr = _outTokenAddr;
 		wethAddr = _wethAddr;

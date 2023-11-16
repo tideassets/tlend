@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import "./BaseUpgradeabilityProxy.sol";
 
@@ -26,4 +26,6 @@ contract InitializableUpgradeabilityProxy is BaseUpgradeabilityProxy {
 			require(success);
 		}
 	}
+
+	//  receive() external payable {}
 }

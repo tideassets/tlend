@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 pragma experimental ABIEncoderV2;
 
 // import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -762,7 +762,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
 		address variableDebtAddress,
 		address interestRateStrategyAddress
 	) external onlyLendingPoolConfigurator {
-		require(Address.isContract(asset), Errors.LP_NOT_CONTRACT);
+		// require(Address.isContract(asset), Errors.LP_NOT_CONTRACT);
 		_reserves[asset].init(aTokenAddress, stableDebtAddress, variableDebtAddress, interestRateStrategyAddress);
 		_addReserveToList(asset);
 	}

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
-import {IUniswapV2Router} from "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
+import {IUniswapV2Router02} from "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
@@ -140,7 +140,7 @@ contract Compounder is OwnableUpgradeable, PausableUpgradeable {
 		priceProvider = IMultiFeeDistribution(multiFeeDistribution).getPriceProvider();
 		wethToRadiant = [baseToken, address(rdntToken)];
 		compoundFee = _compoundFee;
-		__Ownable_init();
+		__Ownable_init(msg.sender);
 		__Pausable_init();
 	}
 
@@ -223,7 +223,7 @@ contract Compounder is OwnableUpgradeable, PausableUpgradeable {
 			if (tokenToTrade != baseToken) {
 				IERC20(tokenToTrade).forceApprove(uniRouter, amount);
 				try
-					IUniswapV2Router(uniRouter).swapExactTokensForTokens(
+					IUniswapV2Router02(uniRouter).swapExactTokensForTokens(
 						amount,
 						0,
 						rewardToBaseRoute[tokenToTrade],
@@ -407,7 +407,7 @@ contract Compounder is OwnableUpgradeable, PausableUpgradeable {
 		if (_wethIn != 0) {
 			if (_execute) {
 				IERC20(baseToken).forceApprove(uniRouter, _wethIn);
-				uint256[] memory amounts = IUniswapV2Router(uniRouter).swapExactTokensForTokens(
+				uint256[] memory amounts = IUniswapV2Router02(uniRouter).swapExactTokensForTokens(
 					_wethIn,
 					0,
 					wethToRadiant,
@@ -416,7 +416,7 @@ contract Compounder is OwnableUpgradeable, PausableUpgradeable {
 				);
 				rdntOut = amounts[amounts.length - 1];
 			} else {
-				uint256[] memory amounts = IUniswapV2Router(uniRouter).getAmountsOut(
+				uint256[] memory amounts = IUniswapV2Router02(uniRouter).getAmountsOut(
 					_wethIn, //amt in
 					wethToRadiant
 				);

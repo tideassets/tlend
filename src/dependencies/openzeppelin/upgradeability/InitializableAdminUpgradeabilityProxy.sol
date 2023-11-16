@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.20;
 
 import "./BaseAdminUpgradeabilityProxy.sol";
 import "./InitializableUpgradeabilityProxy.sol";
@@ -32,4 +32,6 @@ contract InitializableAdminUpgradeabilityProxy is BaseAdminUpgradeabilityProxy, 
 	function _willFallback() internal override(BaseAdminUpgradeabilityProxy, Proxy) {
 		BaseAdminUpgradeabilityProxy._willFallback();
 	}
+
+	// receive() external payable override{}
 }
