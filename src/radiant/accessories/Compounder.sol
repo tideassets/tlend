@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.12;
 
-import {IUniswapV2Router} from "@uniswap/v2-core/contracts/interfaces/IUniswapV2Router.sol";
+import {IUniswapV2Router} from "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
